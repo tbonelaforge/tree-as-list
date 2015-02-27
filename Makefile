@@ -1,7 +1,12 @@
-all: tree_as_list_test.bin
+all: permutation_iterator tree_as_list_test.bin
 
 tree_as_list_test.bin: tree_as_list_test.c node.h node.o
-	gcc -I ./ tree_as_list_test.c node.o -o tree_as_list_test.bin
+	gcc -I ./ -I ./permutation_iterator/ tree_as_list_test.c node.o permutation_iterator/permutation_iterator.o permutation_iterator/permutation.o -o tree_as_list_test.bin
 
 node.o: node.c node.h
 	gcc -I ./ -c node.c -o node.o
+
+.PHONY: permutation_iterator
+
+permutation_iterator:
+	cd ./permutation_iterator; make
