@@ -6,6 +6,19 @@
 #include "permutation_iterator.h"
 #include "permutation.h"
 
+int compare_as_ints(void * a, void * b) {
+    long int a_long = (long int) a;
+    long int b_long = (long int) b;
+
+    if (a_long < b_long) {
+        return -1;
+    } else if (a_long == b_long) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
 void test_inserting_permuted_elements(struct permutation * perm, int A[], int n) {
     int i;
     int index;
